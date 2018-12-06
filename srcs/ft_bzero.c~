@@ -1,0 +1,11 @@
+#if 0
+
+ft_bzero.c
+
+#endif
+
+void	bzero(void *s, size_t n)
+{
+  while (n--)
+    *((char*)s + n) = 0;
+}

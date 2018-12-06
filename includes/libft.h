@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lib.h                                           :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIB_H
-# define FT_LIB_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
+# include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 
 int				ft_atoi(char *str);
 void			ft_putchar(char c);
@@ -55,9 +57,12 @@ void			ft_zero_bit(void *pv, unsigned int elem_size, unsigned int bit_pos);
 int				ft_test_bit(void *pv, unsigned int elem_size, unsigned int bit_pos);
 void			ft_reverse_bits(void *pv, unsigned int elem_size);
 
-void			*ft_memcpy(void *dest, void *src, unsigned int count);
-int				ft_memcmp(void *lhs, void *rhs, unsigned int count);
-void			*ft_memset(void *dest, int ch, unsigned int count);
-void			*ft_memmove(void *dest, void *src, unsigned int count);
+void			*ft_memset(void *b, int c, size_t len);
+void			ft_bzero(void *s, size_t n);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void			*ft_memmove(void *dst, const void *src, size_t len);
+void			*ft_memchr(const void *s, int c, size_t n);
+int			ft_memcmp(const void *s1, const void *s2, size_t n);
 
 #endif 

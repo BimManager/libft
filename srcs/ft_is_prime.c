@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 15:45:14 by kkozlov           #+#    #+#             */
-/*   Updated: 2018/11/11 16:34:35 by kkozlov          ###   ########.fr       */
+/*   Created: 2018/11/11 12:59:28 by kkozlov           #+#    #+#             */
+/*   Updated: 2018/11/11 13:54:18 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_lib.h"
+#include "libft.h"
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+int		ft_is_prime(unsigned int nb)
 {
-	int		dlen;
-	int		slen;
-	int		max;
+	unsigned int i;
 
-	dlen = ft_strlen(dest);
-	slen = ft_strlen(src);
-	if (size == 0)
-		return (slen);
-	max = size - dlen - 1;
-	dest += dlen;
-	if (max <= 0)
-		return (size + slen);
-	while (max--)
-		*dest++ = *src++;
-	*dest = '\0';
-	return (dlen + slen);
+	if (nb <= 1)
+		return (0);
+	else if (nb <= 3)
+		return (1);
+	else if (nb % 2 == 0 || nb % 3 == 0)
+		return (0);
+	i = 5;
+	while (i * i <= nb)
+	{
+		if (nb % i == 0 || nb % (i + 2) == 0)
+			return (0);
+		i += 6;
+	}
+	return (1);
 }
