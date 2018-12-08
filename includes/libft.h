@@ -42,12 +42,15 @@ char			*ft_strcpy(char *dest, char *src);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int				ft_strlen(char *str);
-char			*ft_strstr(char *str, char *to_find);
+char			*ft_strstr(const char *haystack, const char *needle);
+char			*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char			*ft_strlowcase(char *str);
 char			*ft_strncat(char *dest, char *src, int nb);
 int				ft_strncmp(char *s1, char *s2, unsigned int n);
 char			*ft_strupcase(char *str);
 void			ft_swap(int *a, int *b);
+char			*ft_strchr(const char *s, int c);
+char			*ft_strrchr(const char *s, int c);
 
 int				ft_is_prime(unsigned int nb);
 
