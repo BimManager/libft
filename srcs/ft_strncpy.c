@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	char *str;
+#include "libft.h"
 
-	str = dest;
-	while (n-- && *str)
-		*dest++ = *src++;
-	*dest++ = '\0';
-	while (n--)
-		*dest++ = '\0';
-	return (str);
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	char *ret;
+
+	ret = dst;
+	while (*src && n--)
+		*dst++ = *src++;
+	*dst++ = 0x00;
+	while (--n)
+		*dst++ = 0x00;
+	return (ret);
 }

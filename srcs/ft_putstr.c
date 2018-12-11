@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include "libft.h"
 
-void	ft_putstr(char *str)
+void	ft_putstr(char const *s)
 {
-	while (*str)
+	while (*s)
 	{
-		ft_putchar(*str++);
+	  write(1, s++, 1);
 	}
 }

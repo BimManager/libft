@@ -36,7 +36,7 @@ int			ft_toupper(int c);
 int			ft_tolower(int c);
 
 int			ft_is_whitespace(char c);
-char			*ft_strncpy(char *dest, char *src, unsigned int n);
+char			*ft_strncpy(char *dst, const char *src, size_t n);
 char			**ft_split_whitespaces(char *str);
 int			ft_is_alpha(char c);
 int			ft_str_is_alpha(char *str);
