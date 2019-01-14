@@ -10,11 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
-{
-	int t;
+#include "libft.h"
 
-	t = *a;
-	*a = *b;
-	*b = t;
+void	ft_swap(void *pv1, void *pv2, size_t elem_size)
+{
+  void *buf;
+
+  buf = malloc(elem_size * sizeof(char));
+  ft_memcpy(buf, pv1, elem_size);
+  ft_memcpy(pv1, pv2, elem_size);
+  ft_memcpy(pv2, buf, elem_size);
+  free(buf);
 }

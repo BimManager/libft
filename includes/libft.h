@@ -17,12 +17,41 @@
 # include <stdlib.h>
 # include <string.h>
 
+enum			e_colour
+{
+  RB_BLACK,
+  RB_RED
+};	
+
 typedef struct		s_list
 {
   void			*content;
   size_t		content_size;
   struct s_list		*next;
 }			t_list;
+
+typedef struct		s_stack
+{
+  t_list		*top;
+  void			(*free_fn)(void *, size_t);
+}			t_stack;
+
+typedef struct		s_queue
+{
+  t_list		*head;
+  t_list		*tail;
+  void			(*free_fn)(void *, size_t);
+}			t_queue;
+
+typedef struct		s_bnode
+{
+  struct s_bnode	*parent;
+  struct s_bnode	*left;
+  struct s_bnode	*right;
+  void			*content;
+  size_t		content_size;
+  enum e_colour		colour;
+}			t_bnode;
 
 int			ft_atoi(const char *str);
 int			ft_isalpha(int c);
@@ -51,7 +80,7 @@ int			ft_str_is_uppercase(char *str);
 char			*ft_strcapitalize(char *str);
 char			*ft_strdup(char *str);
 char			*ft_strcat(char *dest, char *src);	
-int			ft_strcmp(char *s1, char *s2);
+int			ft_strcmp(const char *s1, const char *s2);
 char			*ft_strcpy(char *dest, char *src);
 unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int		ft_strlcat(char *dest, char *src, unsigned int size);
@@ -62,10 +91,11 @@ char			*ft_strlowcase(char *str);
 char			*ft_strncat(char *dest, char *src, int nb);
 int			ft_strncmp(char *s1, char *s2, unsigned int n);
 char			*ft_strupcase(char *str);
-void			ft_swap(int *a, int *b);
+void			ft_swap(void *pv1, void *pv2, size_t elem_size);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 
+size_t			ft_gcd(size_t a, size_t b);
 int			ft_is_prime(unsigned int nb);
 
 void			ft_print_bit_pattern(void *pv, unsigned int elem_size);
@@ -114,5 +144,31 @@ void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f) (t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list * (*f) (t_list *elem));
 void			ft_lstrev(t_list **alst);
+size_t			ft_lstsize(t_list *lst);
+
+t_stack			*ft_stacknew(void const *content, size_t content_size, void (*del) (void *, size_t));
+void			ft_stackdel(t_stack **stack); 
+void			ft_stackpush(t_stack *stack, void *content, size_t content_size);
+void			*ft_stackpop(t_stack *stack);
+void			*ft_stackpeek(t_stack *stack);
+size_t			ft_stacksize(t_stack *stack);
+
+t_queue			*ft_queuenew(void const *content, size_t content_size, void (*del) (void *, size_t));
+void			ft_queuedel(t_queue **queue); 
+void			ft_enqueue(t_queue *queue, void *content, size_t content_size);
+void			*ft_dequeue(t_queue *queue);
+void			*ft_queuepeek(t_queue *queue);
+size_t			ft_queuesize(t_queue *queue);
+
+
+void			ft_qsort(void *base, size_t nel, size_t width,
+				int (*compar)(const void *, const void *));
+int			ft_heapsort(void *base, size_t nel, size_t width,
+				int (*compar)(const void *, const void *));
+int			ft_mergesort(void *base, size_t nel, size_t width,
+				int (*compar)(const void *, const void *));
+
+int			**ft_power_set(int const *set, size_t size);
+int			**ft_permute(int const *set, size_t size);
 
 #endif 
