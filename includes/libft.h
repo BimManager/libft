@@ -92,6 +92,7 @@ char			*ft_strncat(char *dest, char *src, int nb);
 int			ft_strncmp(char *s1, char *s2, unsigned int n);
 char			*ft_strupcase(char *str);
 void			ft_swap(void *pv1, void *pv2, size_t elem_size);
+void			ft_rotate(void *front, void *middle, void *end); 
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 
