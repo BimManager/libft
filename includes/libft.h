@@ -17,11 +17,12 @@
 # include <stdlib.h>
 # include <string.h>
 
-enum			e_colour
-{
-  RB_BLACK,
-  RB_RED
-};	
+# ifdef NDEBUG
+#  define FT_ASSERT(expr) ((void)0);
+# else
+#  define FT_ASSERT(expr) \
+  ((expr) ? (void)0 : ft_assert(#expr, __FILE__, __LINE__));
+# endif
 
 typedef struct		s_list
 {
@@ -43,15 +44,14 @@ typedef struct		s_queue
   void			(*free_fn)(void *, size_t);
 }			t_queue;
 
-typedef struct		s_bnode
+typedef struct		s_tnode
 {
-  struct s_bnode	*parent;
-  struct s_bnode	*left;
-  struct s_bnode	*right;
+  struct s_tnode	*left;
+  struct s_tnode	*right;
+  unsigned int		black_red : 1;
   void			*content;
   size_t		content_size;
-  enum e_colour		colour;
-}			t_bnode;
+}			t_tnode;
 
 int			ft_atoi(const char *str);
 int			ft_isalpha(int c);
@@ -96,6 +96,8 @@ void			ft_rotate(void *front, void *middle, void *end);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 
+void			ft_assert(const char *expr, const char *file, int nline);
+
 size_t			ft_gcd(size_t a, size_t b);
 int			ft_is_prime(unsigned int nb);
 
@@ -112,9 +114,9 @@ void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
-
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
+
 char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);
 void			ft_strclr(char *s);
