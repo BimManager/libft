@@ -4,16 +4,12 @@ CC = gcc
 AR = ar
 NAME = libft.a
 HDRS = *.h
-#SRCS = $(shell find ./srcs -name "*.c")
-SRCS := $(wildcard srcs/*.c)
+SRCS := $(wildcard *.c)
 OBJDIR = objs
 OBJS := *.o
 
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror
 ARFLAGS = -v -q
-
-vpath %.h includes
-vpath %.c srcs
 
 all : $(NAME)
 
@@ -25,7 +21,7 @@ $(OBJS) : $(SRCS)
 
 .PHONY : clean
 clean :
-	rm -f *.o
+	rm -f $(OBJS)
 
 .PHONY : fclean
 fclean : clean
