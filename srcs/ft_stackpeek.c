@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackdel.c                                      :+:      :+:    :+:   */
+/*   ft_stackpeek.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/16 13:57:15 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/16 13:57:31 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/02/16 13:58:41 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/03/04 09:31:53 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_stackdel(t_stack **stack)
+t_list	*ft_stackpeek(t_stack *stack)
 {
-	if (!*stack)
-		return ;
-	ft_lstdel(&(*stack)->top, (*stack)->free_fn);
-	free(*stack);
-	*stack = 0;
+	if (!stack)
+		return (NULL);
+	return (stack->top);
 }

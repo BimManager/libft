@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacknew.c                                      :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/16 13:42:32 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/16 14:28:34 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/02/13 09:52:33 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/03/04 15:09:08 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack	*ft_stacknew(void const *content, size_t content_size,
-				void (*del)(void *, size_t))
+void	ft_lstdel(t_list **alst, void (*del) (void *, size_t))
 {
-	t_stack	*stack;
-	t_list	*new;
+	t_list *tmp;
 
-	stack = malloc(sizeof(t_stack));
-	if (!stack)
-		return (0);
-	new = ft_lstnew(content, content_size);
-	if (!new)
+	if (!alst)
+		return ;
+	while (*alst)
 	{
-		free(stack);
-		return (0);
+		del((*alst)->content, (*alst)->content_size);
+		tmp = (*alst)->next;
+		free((*alst));
+		*alst = 0;
+		*alst = tmp;
 	}
-	stack->top = new;
-	stack->free_fn = del;
-	return (stack);
 }

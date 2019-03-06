@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackpeek.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/16 13:58:41 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/16 14:07:19 by kkozlov          ###   ########.fr       */
+/*   Created: 2018/11/11 15:42:33 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/03/01 10:27:30 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_stackpeek(t_stack *stack)
+char	*ft_strdup(const char *s1)
 {
-	if (!stack)
-		return (0);
-	return (stack->top);
+	char	*s2;
+	size_t	dstsize;
+
+	dstsize = ft_strlen(s1) + 1;
+	s2 = malloc(dstsize);
+	if (!s2)
+		return (NULL);
+	ft_strlcpy(s2, s1, dstsize);
+	return (s2);
 }

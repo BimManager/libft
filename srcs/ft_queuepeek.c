@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackpush.c                                     :+:      :+:    :+:   */
+/*   ft_queuepeek.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/16 13:49:57 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/16 13:50:10 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/02/16 14:03:43 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/03/02 17:46:33 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_stackpush(t_stack *stack, void *content, size_t content_size)
+t_list	*ft_queuepeek(t_queue *queue)
 {
-	t_list *new;
-
-	new = ft_lstnew(content, content_size);
-	new->next = stack->top;
-	stack->top = new;
+	if (!queue || !queue->head)
+		return (NULL);
+	return (queue->head);
 }

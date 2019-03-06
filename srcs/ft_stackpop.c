@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dequeue.c                                       :+:      :+:    :+:   */
+/*   ft_stackpop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/16 11:59:39 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/16 12:00:04 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/02/16 13:51:25 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/03/04 09:32:44 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_dequeue(t_queue *queue)
+t_list	*ft_stackpop(t_stack *stack)
 {
-	void		*content;
+	t_list	*top;
 
-	if (!queue || !queue->head)
-		return (0);
-	content = malloc(queue->head->content_size * sizeof(char));
-	if (!content)
-		return (0);
-	ft_memcpy(content, queue->head->content, queue->head->content_size);
-	ft_lstdelone(&queue->head, queue->free_fn);
-	return (content);
+	if (!stack || !stack->top)
+		return (NULL);
+	top = stack->top;
+	stack->top = stack->top->next;
+	top->next = NULL;
+	return (top);
 }

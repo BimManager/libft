@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstrev.c                                        :+:      :+:    :+:   */
+/*   ft_queuedel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/13 11:37:43 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/13 11:39:55 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/02/16 12:01:36 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/03/04 09:27:21 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstrev(t_list **alst)
+void	ft_queuedel(t_queue **queue, void (*del) (void *, size_t))
 {
-	t_list *prv;
-	t_list *cur;
-	t_list *nxt;
-
-	if (!alst)
+	if (!*queue)
 		return ;
-	prv = 0;
-	cur = *alst;
-	while (cur)
-	{
-		nxt = cur->next;
-		cur->next = prv;
-		prv = cur;
-		cur = nxt;
-	}
-	*alst = prv;
+	ft_lstdel(&(*queue)->head, del);
+	free(*queue);
+	*queue = 0;
 }

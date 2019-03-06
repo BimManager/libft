@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/24 17:38:57 by kkozlov          ###   ########.fr       */
+/*   Updated: 2019/03/06 12:41:38 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void				ft_assert(const char *expr, const char *file, int nline);
 # endif
 
 # define BYTE 8
+# define BUFF_SIZE	42
+# define MAX_FDS	4864
 
 typedef struct		s_list
 {
@@ -41,14 +43,12 @@ typedef struct		s_list
 typedef struct		s_stack
 {
 	t_list			*top;
-	void			(*free_fn)(void *, size_t);
 }					t_stack;
 
 typedef struct		s_queue
 {
 	t_list			*head;
 	t_list			*tail;
-	void			(*free_fn)(void *, size_t);
 }					t_queue;
 
 typedef struct		s_tnode
@@ -59,6 +59,8 @@ typedef struct		s_tnode
 	void			*content;
 	size_t			content_size;
 }					t_tnode;
+
+int					get_next_line(const int fd, char **line);
 
 int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
@@ -80,7 +82,8 @@ int					ft_str_isnumeric(char *str);
 int					ft_str_isprint(char *str);
 int					ft_str_isupper(char *str);
 char				*ft_strcapitalize(char *str);
-char				*ft_strdup(char *str);
+char				*ft_strdup(const char *s1);
+char				*ft_strndup(const char *s1, size_t n);
 char				*ft_strcat(char *dest, char *src);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *dest, char *src);
@@ -133,6 +136,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+t_list				*ft_strsplit_lst(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int value, int base);
 void				ft_putchar(char c);
@@ -158,32 +162,23 @@ void				ft_lstrev(t_list **alst);
 size_t				ft_lstsize(t_list *lst);
 t_list				*ft_lstsort(t_list *lst, int (*cmp)(void *, void *));
 
-t_stack				*ft_stacknew(void const *content, size_t content_size,
-						void (*del) (void *, size_t));
-void				ft_stackdel(t_stack **stack);
+t_stack				*ft_stacknew(void const *content, size_t content_size);
+void				ft_stackdel(t_stack **stack, void (*del) (void *, size_t));
 void				ft_stackpush(t_stack *stack, void *content,
 						size_t content_size);
-void				*ft_stackpop(t_stack *stack);
-void				*ft_stackpeek(t_stack *stack);
+t_list				*ft_stackpop(t_stack *stack);
+t_list				*ft_stackpeek(t_stack *stack);
 size_t				ft_stacksize(t_stack *stack);
 
-t_queue				*ft_queuenew(void const *content, size_t content_size,
-						void (*del) (void *, size_t));
-void				ft_queuedel(t_queue **queue);
+t_queue				*ft_queuenew(void const *content, size_t content_size);
+void				ft_queuedel(t_queue **queue, void (*del) (void *, size_t));
 void				ft_enqueue(t_queue *queue, void *content,
 						size_t content_size);
-void				*ft_dequeue(t_queue *queue);
-void				*ft_queuepeek(t_queue *queue);
+t_list				*ft_dequeue(t_queue *queue);
+t_list				*ft_queuepeek(t_queue *queue);
 size_t				ft_queuesize(t_queue *queue);
 
 void				ft_qsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
-int					ft_heapsort(void *base, size_t nel, size_t width,
-						int (*compar)(const void *, const void *));
-int					ft_mergesort(void *base, size_t nel, size_t width,
-						int (*compar)(const void *, const void *));
-
-int					**ft_power_set(int const *set, size_t size);
-int					**ft_permute(int const *set, size_t size);
 
 #endif
