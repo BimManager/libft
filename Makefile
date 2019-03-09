@@ -58,7 +58,8 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_strtrim.c ft_strupcase.c \
 		ft_swap.c ft_tolower.c \
 		ft_toupper.c ft_strndup.c \
-		get_next_line.c)
+		get_next_line.c ft_putaddr.c \
+		ft_putsizet.c)
 OBJS := ft_abs.o ft_assert.o \
 		ft_atoi.o ft_bit_manip.o \
 		ft_bzero.o ft_dequeue.o \
@@ -110,7 +111,8 @@ OBJS := ft_abs.o ft_assert.o \
 		ft_strtrim.o ft_strupcase.o \
 		ft_swap.o ft_tolower.o \
 		ft_toupper.o ft_strndup.o \
-		get_next_line.o
+		get_next_line.o ft_putaddr.o \
+		ft_putsizet.o
 
 CFLAGS = -Wall -Wextra -Werror -Iincludes/
 ARFLAGS = -q -c
