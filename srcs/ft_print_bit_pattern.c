@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:36:57 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/24 17:40:58 by kkozlov          ###   ########.fr       */
+/*   Updated: 2019/12/04 10:29:06 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void			ft_print_bit_pattern(void *pv, size_t elem_size)
 {
 	size_t	i;
 
-	i = -1;
-	while ((++i) < elem_size)
+	i = elem_size;
+	while (i--)
 	{
 		ft_print_bits(*((char*)pv + i));
 		ft_putchar(' ');
