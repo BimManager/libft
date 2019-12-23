@@ -2,10 +2,14 @@
 
 CC = gcc
 AR = ar
-SRCDIR := srcs
-OBJDIR := objs
-NAME = libft.a
+
+CFLAGS = -Wall -Wextra -Werror -c -Iinclude/
+ARFLAGS = -q -c
+
 HDRS = libft.h
+SRCDIR := src
+OBJDIR := build
+NAME = libft.a
 SRCS := $(addprefix $(SRCDIR)/, \
 		ft_abs.c ft_assert.c \
 		ft_atoi.c ft_bit_manip.c \
@@ -59,9 +63,11 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_swap.c ft_tolower.c \
 		ft_toupper.c ft_strndup.c \
 		get_next_line.c ft_putaddr.c \
-		ft_putsizet.c ft_memdup.c)
+		ft_putsizet.c ft_memdup.c \
+		ft_ispow2.c)
 
-OBJS := ft_abs.o ft_assert.o \
+OBJS := $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(SRCS))
+#OBJS := ft_abs.o ft_assert.o \
 		ft_atoi.o ft_bit_manip.o \
 		ft_bzero.o ft_dequeue.o \
 		ft_enqueue.o ft_gcd.o \
@@ -115,24 +121,27 @@ OBJS := ft_abs.o ft_assert.o \
 		get_next_line.o ft_putaddr.o \
 		ft_putsizet.o ft_memdup.o
 
-CFLAGS = -Wall -Wextra -Werror -Iincludes/
-ARFLAGS = -q -c
+# $(OBJS) : $(SRCS)
+#$(CC) $(CFLAGS) -c $^
+
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-$(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) -c $^
+mkdir :
+	@if [[ ! -e $(OBJDIR) ]]; then mkdir $(OBJDIR); fi
 
-.PHONY : clean
+$(OBJDIR)/%.o : $(SRCDIR)/%.c mkdir
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 clean :
-	@rm -f $(OBJS)
+	@if [[ -e $(OBJDIR) ]]; then rm -rf $(OBJDIR); fi
 
-.PHONY : fclean
 fclean : clean
 	@rm -f $(NAME)
 
-.PHONY : re 
 re : fclean all
+
+.PHONY : all clean fclean re mkdir

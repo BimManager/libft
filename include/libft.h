@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/03/08 16:33:54 by kkozlov          ###   ########.fr       */
+/*   Updated: 2019/12/22 16:41:33 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ unsigned int		ft_abs(int x);
 double				ft_sqrt(double x);
 size_t				ft_gcd(size_t a, size_t b);
 int					ft_isprime(unsigned int nb);
+int					ft_ispow2(size_t x);
 
 void				ft_print_bit_pattern(void *pv, size_t elem_size);
 void				ft_set_bit(void *pv, size_t elem_size, size_t bit_pos);
