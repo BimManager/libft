@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/22 16:41:33 by kkozlov          ###   ########.fr       */
+/*   Updated: 2019/12/22 17:16:05 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@
 # ifdef NDEBUG
 
 #  define FT_ASSERT(exp) ((void)0)
-
 # else
-
 void				ft_assert(const char *expr, const char *file, int nline);
-
 #  define FT_ASSERT(e) ((e) ? (void)0 : ft_assert(#e, __FILE__, __LINE__))
-
 # endif
 
-# define BYTE 8
+# define FT_UINT64_2PART(a, b) ((size_t)a << 32 + 0x##b##u)
+
+# define BYTE 		8
 # define BUFF_SIZE	42
 # define MAX_FDS	4864
 
