@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/05 12:15:07 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/05 12:27:44 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+char	*ft_strrev(char *str)
 {
-	void	*ret;
+	char	*pb;
+	char	*pe;
 
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
-	return (ret);
+	if (!*str)
+		return (str);
+	pb = str;
+	pe = str;
+	while (*pe)
+		++pe;
+	--pe;
+	while (pb < pe)
+		ft_swap(pb++, pe--, sizeof(char));
+	return (str);
 }

@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_infnan.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/12 15:49:48 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/15 17:34:28 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+char	*ft_infnan(long double ldb)
 {
-	void	*ret;
+	char		*ret;
+	t_ext80		ext80;
 
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
+	ext80.value = ldb;
+	ret = malloc(4 * sizeof(char));
+	if (EXP_ALL_ONES == ext80.bits.exp)
+	{
+		if (!(ext80.bits.man << 1))
+			ft_strcpy(ret, "inf");
+		else
+			ft_strcpy(ret, "nan");
+	}
+	else
+		ft_memdel((void **)&ret);
 	return (ret);
 }

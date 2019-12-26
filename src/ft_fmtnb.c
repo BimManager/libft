@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_fmtnb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/19 14:57:02 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/20 11:07:04 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+int	ft_fmtnb(const char **sfmt)
 {
-	void	*ret;
+	char	*pb;
+	char	*snb;
+	int		nb;
 
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
-	return (ret);
+	pb = *(char **)sfmt;
+	while (ft_isdigit(**sfmt))
+		++(*sfmt);
+	snb = malloc((((*sfmt) - pb) + 1) * sizeof(char));
+	*(snb + ((*sfmt) - pb)) = '\0';
+	ft_strncpy(snb, pb, (*sfmt) - pb);
+	nb = ft_atoi(snb);
+	free(snb);
+	return (nb);
 }

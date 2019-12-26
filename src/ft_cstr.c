@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_cstr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/07 11:23:48 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/19 09:07:40 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+char	*ft_cstr(va_list pa, t_format *fmt, const char **sfmt)
 {
-	void	*ret;
+	char	*ret;
+	char	ch;
 
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
+	++(*sfmt);
+	fmt->done = 1;
+	ch = va_arg(pa, int);
+	if (!ch)
+	{
+		fmt->null = 1;
+		ch = PSEUDO_NULL;
+	}
+	ret = malloc(2 * sizeof(char));
+	*ret = (char)ch;
+	*(ret + 1) = '\0';
+	ret = ft_fixwidth(ret, fmt);
 	return (ret);
 }

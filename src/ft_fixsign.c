@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_fixsign.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/09 14:56:24 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/19 10:30:51 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+char	*ft_fixsign(char *snb, t_format *fmt)
 {
-	void	*ret;
+	char	*ret;
 
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
+	ret = malloc((ft_strlen(snb) + 2) * sizeof(char));
+	ft_strcpy(ret + 1, snb);
+	if (fmt->neg)
+		ft_strncpy(ret, "-", 1);
+	else if (fmt->plus)
+		ft_strncpy(ret, "+", 1);
+	else if (fmt->space)
+		ft_strncpy(ret, " ", 1);
+	else
+		ft_strcpy(ret, snb);
+	free(snb);
 	return (ret);
 }

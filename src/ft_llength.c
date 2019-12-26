@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_llength.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/08 13:39:33 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/17 16:06:30 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+char	*ft_llength(va_list pa, t_format *fmt, const char **sfmt)
 {
-	void	*ret;
-
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
-	return (ret);
+	(void)pa;
+	fmt->length = sizeof(long);
+	if (**sfmt == *(*sfmt + 1))
+	{
+		fmt->length = sizeof(long long);
+		++(*sfmt);
+	}
+	++(*sfmt);
+	return (NULL);
 }

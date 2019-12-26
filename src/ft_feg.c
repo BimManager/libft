@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_feg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/15 17:16:42 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/20 11:36:08 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+char	*ft_feg(va_list pa, t_format *fmt, const char **sfmt,
+				char *(*pfn)(const void *pnb, size_t prec))
 {
-	void	*ret;
+	long double	v;
+	char		*ret;
 
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
+	++(*sfmt);
+	fmt->done = 1;
+	v = ft_getldb(pa, fmt);
+	if (!(ret = ft_infnan(v)))
+		ret = pfn(&v, -1 != fmt->prec ? fmt->prec : 6);
 	return (ret);
 }

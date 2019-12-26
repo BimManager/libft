@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdup.c                                        :+:      :+:    :+:   */
+/*   ft_fixhash_boxp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/12 14:57:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:14:21 by kkozlov          ###   ########.fr       */
+/*   Created: 2019/12/19 10:34:41 by kkozlov           #+#    #+#             */
+/*   Updated: 2019/12/19 10:41:26 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(const void *src, size_t n)
+char	*ft_fixhash_boxp(char *snb, t_format *fmt, char *hash)
 {
-	void	*ret;
+	char	*ret;
+	int		sln;
+	int		pln;
 
-	ret = malloc(n * sizeof(char));
-	if (!ret)
-		return (NULL);
-	while (n--)
-		*((char *)ret + n) = *((char *)src + n);
+	if (!fmt->hash)
+		return (snb);
+	sln = ft_strlen(snb);
+	pln = ft_strlen(hash);
+	ret = malloc((sln + pln + 1) * sizeof(char));
+	ft_strncpy(ret, hash, pln);
+	ft_strcpy(ret + pln, snb);
+	free(snb);
 	return (ret);
 }
