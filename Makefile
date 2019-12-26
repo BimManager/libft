@@ -80,7 +80,7 @@ mkdir :
 	@if [[ ! -e $(OBJDIR) ]]; then mkdir $(OBJDIR); fi
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c mkdir
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	@if [[ -e $(OBJDIR) ]]; then rm -rf $(OBJDIR); fi
