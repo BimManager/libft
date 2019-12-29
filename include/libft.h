@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/26 12:11:12 by kkozlov          ###   ########.fr       */
+/*   Updated: 2019/12/29 13:24:17 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ void				ft_assert(const char *expr, const char *file, int nline);
 # define EXP_MAX		16383
 # define EXP_MIN		-16382
 
-typedef unsigned int	t_uint32;
-typedef size_t			t_uint64;
-
 typedef struct		s_format
 {
 	char			align : 1;
@@ -64,7 +61,8 @@ typedef struct		s_format
 	int				length;
 }					t_format;
 
-typedef char		*(*t_pfmtfn)(va_list pa, t_format *data, const char **sfmt);
+typedef unsigned int	t_uint32;
+typedef size_t			t_uint64;
 
 typedef struct		s_ext80bits
 {
@@ -97,6 +95,25 @@ typedef struct		s_queue
 	t_list			*tail;
 }					t_queue;
 
+typedef struct		s_deque
+{
+	t_list			*head;
+	t_list			*tail;
+}					t_deque;
+
+typedef struct		s_data
+{
+	void			*data;
+	size_t			size;
+}					t_data;
+
+typedef struct		s_dlst
+{
+	t_data			*data;
+	struct s_dlst	*next;
+	struct s_dlst	*prev;
+}					t_dlst;
+
 typedef struct		s_tnode
 {
 	struct s_tnode	*left;
@@ -105,6 +122,8 @@ typedef struct		s_tnode
 	void			*content;
 	size_t			content_size;
 }					t_tnode;
+
+typedef char		*(*t_pfmtfn)(va_list pa, t_format *data, const char **sfmt);
 
 int					get_next_line(const int fd, char **line);
 
@@ -228,6 +247,17 @@ void				ft_enqueue(t_queue *queue, void *content,
 t_list				*ft_dequeue(t_queue *queue);
 t_list				*ft_queuepeek(t_queue *queue);
 size_t				ft_queuesize(t_queue *queue);
+int					ft_queue_isempty(t_queue *queue);
+
+t_deque				*ft_dequenew(void);
+void				ft_dequedel(t_deque **deque, void (*del)(void *, size_t));
+void				ft_dequecons(t_deque *deque, const void *data, size_t size);
+void				ft_dequesnoc(t_deque *deque, const void *data, size_t size);
+t_list				*ft_dequepeek(const t_deque *deque);
+t_list				*ft_dequekeep(const t_deque *deque);
+t_list				*ft_dequepop(t_deque *deque);
+t_list				*ft_dequeeject(t_deque *deque);
+int					ft_deque_isempty(const t_deque *deque);
 
 void				ft_qsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));

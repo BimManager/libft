@@ -45,7 +45,11 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_putendl.c ft_putendl_fd.c ft_putnbr.c \
 		ft_putnbr_endl.c ft_putnbr_fd.c ft_putsizet.c \
 		ft_putstr.c ft_putstr_fd.c ft_qsort.c \
-		ft_queuedel.c ft_queuenew.c ft_queuepeek.c \
+		ft_queuedel.c ft_queue_isempty.c ft_queuenew.c \
+		ft_queuepeek.c ft_dequenew.c ft_dequedel.c \
+		ft_dequecons.c ft_dequesnoc.c ft_dequepeek.c \
+		ft_dequekeep.c ft_dequepop.c ft_dequeeject.c \
+		ft_deque_isempty.c \
 		ft_queuesize.c ft_radstr.c ft_rotate.c \
 		ft_round.c ft_rstr.c ft_spaceflag.c \
 		ft_split_whitespaces.c ft_splitws_lst.c ft_sqrt.c \
