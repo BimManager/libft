@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/29 13:24:17 by kkozlov          ###   ########.fr       */
+/*   Updated: 2019/12/30 08:55:46 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,24 @@ typedef struct		s_dlst
 
 typedef struct		s_tnode
 {
+	t_data			*data;
 	struct s_tnode	*left;
 	struct s_tnode	*right;
-	size_t			black_red : 1;
-	void			*content;
-	size_t			content_size;
+	char			red;
 }					t_tnode;
+
+typedef struct		s_hpnd
+{
+	struct s_hpnd	*parent;
+	struct s_hpnd	*left;
+	struct s_hpnd	*right;
+	t_data			*data;
+}					t_hpnd;
+
+typedef struct		s_maxheap
+{
+	t_hpnd			*max;
+}					t_maxheap;
 
 typedef char		*(*t_pfmtfn)(va_list pa, t_format *data, const char **sfmt);
 
@@ -179,6 +191,7 @@ void				ft_set_bit(void *pv, size_t elem_size, size_t bit_pos);
 void				ft_zero_bit(void *pv, size_t elem_size, size_t bit_pos);
 int					ft_test_bit(void *pv, size_t elem_size, size_t bit_pos);
 void				ft_reverse_bits(void *pv, size_t elem_size);
+int					ft_hamming_weight(const void *pb, size_t elem_size);
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
