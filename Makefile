@@ -71,7 +71,7 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_swap.c ft_tlength.c ft_tolower.c \
 		ft_toupper.c ft_ustr.c ft_width.c \
 		ft_xprintf.c ft_xstr.c ft_zeroflag.c \
-		ft_zlength.c get_next_line.c)
+		ft_zlength.c get_next_line.c ft_strtol.c)
 
 OBJS := $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(SRCS))
 

@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/12/30 08:55:46 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/04 10:33:41 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdint.h>
 # include <stddef.h>
 # include <time.h>
+# include <limits.h>
 
 # ifdef NDEBUG
 
@@ -139,7 +140,6 @@ typedef char		*(*t_pfmtfn)(va_list pa, t_format *data, const char **sfmt);
 
 int					get_next_line(const int fd, char **line);
 
-int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -179,6 +179,9 @@ void				ft_swap(void *pv1, void *pv2, size_t elem_size);
 void				ft_rotate(void *front, void *middle, void *end);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
+
+int					ft_atoi(const char *str);
+long				ft_strtol(const char *str, int base);
 
 unsigned int		ft_abs(int x);
 double				ft_sqrt(double x);
