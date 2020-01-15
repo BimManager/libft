@@ -75,7 +75,11 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_fndmax.c ft_datanew.c ft_datadel.c \
 		ft_dbnodenew.c ft_dbnodedel.c \
 		ft_dblstnew.c ft_dblstdel.c ft_dblstcons.c \
-		ft_dblstsnoc.c ft_dblstpop.c ft_dblsteject.c)
+		ft_dblstsnoc.c ft_dblstpop.c ft_dblsteject.c \
+		ft_dblstiter.c ft_isdec.c ft_dblst_issorted.c \
+		ft_die.c ft_cntsort.c \
+		ft_trienew.c ft_trieadd.c ft_triefind.c \
+		ft_triedel.c)
 
 OBJS := $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(SRCS))
 

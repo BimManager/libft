@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblstsnoc.c                                     :+:      :+:    :+:   */
+/*   ft_die.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:31:33 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/14 14:05:14 by kkozlov          ###   ########.fr       */
+/*   Created: 2020/01/14 15:15:08 by kkozlov           #+#    #+#             */
+/*   Updated: 2020/01/14 17:33:34 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dblstsnoc(t_dblst *lst, t_data *data)
+void	ft_die(const char *msg, int status)
 {
-	t_dbnode	*node;
-
-	if (!lst->head)
-	{
-		node = ft_dbnodenew(data, NULL, NULL);
-		node->prev = node;
-		node->next = node;
-		lst->head = node;
-	}
-	else
-	{
-		node = ft_dbnodenew(data, lst->head->prev, lst->head);
-		lst->head->prev->next = node;
-		lst->head->prev = node;
-	}
+	ft_printf("\033[1;31m%s\033[0m\n", msg);
+	exit(status);
 }

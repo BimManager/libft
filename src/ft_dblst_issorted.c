@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblstsnoc.c                                     :+:      :+:    :+:   */
+/*   ft_dblst_issorted.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:31:33 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/14 14:05:14 by kkozlov          ###   ########.fr       */
+/*   Created: 2020/01/14 15:36:16 by kkozlov           #+#    #+#             */
+/*   Updated: 2020/01/15 13:43:06 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dblstsnoc(t_dblst *lst, t_data *data)
+int	ft_dblst_issorted(t_dblst *lst,
+		int (*cmp)(const void *, const void *), int asc)
 {
-	t_dbnode	*node;
+	t_dbnode	*it;
+	t_dbnode	*prv;
+	int			i;
 
 	if (!lst->head)
+		return (1);
+	prv = lst->head;
+	it = lst->head;
+	i = asc ? 1 : -1;
+	while ((it = it->next) != lst->head)
 	{
-		node = ft_dbnodenew(data, NULL, NULL);
-		node->prev = node;
-		node->next = node;
-		lst->head = node;
+		if (0 < (cmp(prv->data->content, it->data->content) * i))
+			return (0);
+		prv = it;
 	}
-	else
-	{
-		node = ft_dbnodenew(data, lst->head->prev, lst->head);
-		lst->head->prev->next = node;
-		lst->head->prev = node;
-	}
+	return (1);
 }

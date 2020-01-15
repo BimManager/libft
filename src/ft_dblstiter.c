@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblstsnoc.c                                     :+:      :+:    :+:   */
+/*   ft_dblstiter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:31:33 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/14 14:05:14 by kkozlov          ###   ########.fr       */
+/*   Created: 2020/01/14 14:09:29 by kkozlov           #+#    #+#             */
+/*   Updated: 2020/01/14 14:12:50 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dblstsnoc(t_dblst *lst, t_data *data)
+void	ft_dblstiter(t_dblst *lst, void (*fn)(t_dbnode *))
 {
-	t_dbnode	*node;
+	t_dbnode *it;
 
 	if (!lst->head)
-	{
-		node = ft_dbnodenew(data, NULL, NULL);
-		node->prev = node;
-		node->next = node;
-		lst->head = node;
-	}
-	else
-	{
-		node = ft_dbnodenew(data, lst->head->prev, lst->head);
-		lst->head->prev->next = node;
-		lst->head->prev = node;
-	}
+		return ;
+	it = lst->head;
+	fn(it);
+	while ((it = it->next) != lst->head)
+		fn(it);
 }

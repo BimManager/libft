@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/13 16:35:56 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/15 13:13:25 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void				ft_assert(const char *expr, const char *file, int nline);
 # define MAX_FDS		4864
 # define PSEUDO_NULL	-1
 # define NSIN			8
+# define TRIE_SIZE		256
 
 # define SIGN_SIZE		1
 # define EXP_SIZE		15
@@ -115,6 +116,12 @@ typedef struct		s_dbnode
 	struct s_dbnode	*next;
 }					t_dbnode;
 
+typedef struct		s_trie
+{
+	struct s_trie	*next[TRIE_SIZE];
+	t_data			*data;
+}					t_trie;
+
 typedef struct		s_trnode
 {
 	t_data			*data;
@@ -145,6 +152,8 @@ typedef char		*(*t_pfmtfn)(va_list pa, t_format *data, const char **sfmt);
 
 int					get_next_line(const int fd, char **line);
 
+void				ft_die(const char *msg, int status);
+
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -155,6 +164,7 @@ int					ft_islower(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_iswhitespace(char c);
+int					ft_isdec(const char *str);
 
 char				*ft_strncpy(char *dst, const char *src, size_t n);
 char				**ft_split_whitespaces(char *str);
@@ -290,11 +300,20 @@ void				ft_dbnodedel(t_dbnode **node, void (*del)(void *, size_t));
 
 t_dblst				*ft_dblstnew(void);
 void				ft_dblstdel(t_dblst **lst, void (*del)(void *, size_t));
-void				ft_dblstsnoc(t_dblst *lst, void *content, size_t size);
-void				ft_dblstcons(t_dblst *lst, void *content, size_t size);
+void				ft_dblstsnoc(t_dblst *lst, t_data *data);
+void				ft_dblstcons(t_dblst *lst, t_data *data);
 t_data				*ft_dblstpop(t_dblst *lst);
 t_data				*ft_dblsteject(t_dblst *lst);
+void				ft_dblstiter(t_dblst *lst, void (*fn)(t_dbnode *));
+int					ft_dblst_issorted(t_dblst *lst, int (*cmp)(const void *,
+						const void *), int asc);
 
+t_trie				*ft_trienew(t_data *data);
+void				ft_triedel(t_trie **trie, void (*del)(void *, size_t));
+void				ft_trieadd(t_trie *trie, const char *query, t_data *data);
+t_data				*ft_triefind(t_trie *trie, const char *query);
+
+int					*ft_cntsort(int *arr, size_t n);
 void				ft_qsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
 
