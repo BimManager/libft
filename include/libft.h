@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/15 13:13:25 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/16 13:08:13 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_format
 	int				length;
 }					t_format;
 
+typedef unsigned short	t_uint16;
 typedef unsigned int	t_uint32;
 typedef size_t			t_uint64;
 
@@ -202,7 +203,10 @@ void				*ft_fndmax(void *base, size_t nel, size_t width,
 
 unsigned int		ft_abs(int x);
 double				ft_sqrt(double x);
+size_t				ft_fac(t_uint16 n);
 size_t				ft_gcd(size_t a, size_t b);
+int**				ft_permute(int* nums, int nsize,
+								int* outsize, int** outcsizes);
 int					ft_isprime(unsigned int nb);
 int					ft_ispow2(size_t x);
 
@@ -305,6 +309,8 @@ void				ft_dblstcons(t_dblst *lst, t_data *data);
 t_data				*ft_dblstpop(t_dblst *lst);
 t_data				*ft_dblsteject(t_dblst *lst);
 void				ft_dblstiter(t_dblst *lst, void (*fn)(t_dbnode *));
+int					ft_dblsthas(t_dblst *lst, const void *content,
+								int (*cmp)(const void *, const void *));
 int					ft_dblst_issorted(t_dblst *lst, int (*cmp)(const void *,
 						const void *), int asc);
 
