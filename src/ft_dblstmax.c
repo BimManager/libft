@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblstsnoc.c                                     :+:      :+:    :+:   */
+/*   ft_dblstmax.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:31:33 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/17 11:44:57 by kkozlov          ###   ########.fr       */
+/*   Created: 2020/01/18 15:27:48 by kkozlov           #+#    #+#             */
+/*   Updated: 2020/01/18 15:28:40 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dblstsnoc(t_dblst *lst, t_data *data)
+t_data	*ft_dblstmax(t_dblst *lst, int (*cmp)(const void *, const void *))
 {
-	t_dbnode	*node;
-
-	++lst->elems;
+	t_data		*max;
+	t_dbnode	*it;
+	
 	if (!lst->head)
-	{
-		node = ft_dbnodenew(data, NULL, NULL);
-		node->prev = node;
-		node->next = node;
-		lst->head = node;
-	}
-	else
-	{
-		node = ft_dbnodenew(data, lst->head->prev, lst->head);
-		lst->head->prev->next = node;
-		lst->head->prev = node;
-	}
+		return (NULL);
+	it = lst->head;
+	max = it->data;
+	while ((it = it->next) != lst->head)
+		if (cmp(max->content, it->data->content) < 0)
+			max = it->data;
+	return (max);
 }

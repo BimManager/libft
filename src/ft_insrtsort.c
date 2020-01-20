@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblstsnoc.c                                     :+:      :+:    :+:   */
+/*   ft_insrtsort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:31:33 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/17 11:44:57 by kkozlov          ###   ########.fr       */
+/*   Created: 2020/01/16 19:42:30 by kkozlov           #+#    #+#             */
+/*   Updated: 2020/01/16 19:42:31 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dblstsnoc(t_dblst *lst, t_data *data)
+void	ft_insrtsort(void *base, size_t nel, size_t width,
+			int (*cmp)(const void *, const void *))
 {
-	t_dbnode	*node;
+	size_t	i;
+	size_t	j;
 
-	++lst->elems;
-	if (!lst->head)
+	i = 0;
+	while (++i < nel)
 	{
-		node = ft_dbnodenew(data, NULL, NULL);
-		node->prev = node;
-		node->next = node;
-		lst->head = node;
-	}
-	else
-	{
-		node = ft_dbnodenew(data, lst->head->prev, lst->head);
-		lst->head->prev->next = node;
-		lst->head->prev = node;
+		j = i;
+		while (0 < j && cmp((char *)base + (j - 1) * width,
+							(char *)base + j * width) > 0)
+		{
+			ft_swap((char *)base + (j - 1) * width,
+					(char *)base + j * width, width);
+			--j;
+		}
 	}
 }

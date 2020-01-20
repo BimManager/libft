@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 14:56:49 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/13 14:57:48 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/17 11:43:29 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ t_dblst	*ft_dblstnew(void)
 
 	lst = malloc(sizeof(t_dblst));
 	lst->head = NULL;
+	lst->elems = 0;
 	return (lst);
 }

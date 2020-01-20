@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/16 13:08:13 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/18 17:27:56 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,13 +123,13 @@ typedef struct		s_trie
 	t_data			*data;
 }					t_trie;
 
-typedef struct		s_trnode
+typedef struct		s_btrnd
 {
 	t_data			*data;
-	struct s_trnode	*left;
-	struct s_trnode	*right;
+	struct s_btrnd	*left;
+	struct s_btrnd	*right;
 	char			red;
-}					t_trnode;
+}					t_btrnode;
 
 typedef struct		s_hpnode
 {
@@ -147,6 +147,7 @@ typedef struct		s_maxheap
 typedef struct		s_dblst
 {
 	t_dbnode		*head;
+	int				elems;
 }					t_dblst;
 
 typedef char		*(*t_pfmtfn)(va_list pa, t_format *data, const char **sfmt);
@@ -309,6 +310,8 @@ void				ft_dblstcons(t_dblst *lst, t_data *data);
 t_data				*ft_dblstpop(t_dblst *lst);
 t_data				*ft_dblsteject(t_dblst *lst);
 void				ft_dblstiter(t_dblst *lst, void (*fn)(t_dbnode *));
+t_data				*ft_dblstmax(t_dblst *lst,
+								int (*cmp)(const void *, const void *));
 int					ft_dblsthas(t_dblst *lst, const void *content,
 								int (*cmp)(const void *, const void *));
 int					ft_dblst_issorted(t_dblst *lst, int (*cmp)(const void *,
@@ -319,7 +322,11 @@ void				ft_triedel(t_trie **trie, void (*del)(void *, size_t));
 void				ft_trieadd(t_trie *trie, const char *query, t_data *data);
 t_data				*ft_triefind(t_trie *trie, const char *query);
 
+int					ft_btrdiam(t_btrnode *root);
+
 int					*ft_cntsort(int *arr, size_t n);
+void				ft_insrtsort(void *base, size_t nel, size_t width,
+						int (*cmp)(const void *, const void *));
 void				ft_qsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
 
