@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 15:27:48 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/18 15:28:40 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:38:04 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_data	*ft_dblstmax(t_dblst *lst, int (*cmp)(const void *, const void *))
 {
 	t_data		*max;
 	t_dbnode	*it;
-	
+
 	if (!lst->head)
 		return (NULL);
 	it = lst->head;

@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/18 17:27:56 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:39:25 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,8 +206,8 @@ unsigned int		ft_abs(int x);
 double				ft_sqrt(double x);
 size_t				ft_fac(t_uint16 n);
 size_t				ft_gcd(size_t a, size_t b);
-int**				ft_permute(int* nums, int nsize,
-								int* outsize, int** outcsizes);
+int					**ft_permute(int *nums, int nsize,
+								int *outsize, int **outcsizes);
 int					ft_isprime(unsigned int nb);
 int					ft_ispow2(size_t x);
 

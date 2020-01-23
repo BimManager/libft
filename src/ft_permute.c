@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 13:05:26 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/16 13:29:51 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:36:57 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 **	Heap's algorithm generates all possible
 **	permutations of n objects.
 */
+
 static void	generate(int **tab, int *arr, int n, int k)
 {
 	int			i;
@@ -38,7 +39,7 @@ static void	generate(int **tab, int *arr, int n, int k)
 	}
 }
 
-int**		ft_permute(int* nums, int nsize, int* outsize, int** outcsizes)
+int			**ft_permute(int *nums, int nsize, int *outsize, int **outcsizes)
 {
 	int		**ret;
 	size_t	size;
