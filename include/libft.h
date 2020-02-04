@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/23 15:39:25 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/01/27 14:04:40 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void				ft_assert(const char *expr, const char *file, int nline);
 # define FT_UINT64_2PART(a, b) ((size_t)a << 32 + 0x##b##u)
 
 # define BYTE 			8
-# define BUFF_SIZE		42
+# define BUFF_SIZE		1
 # define MAX_FDS		4864
 # define PSEUDO_NULL	-1
 # define NSIN			8

@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 13:21:36 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/04 10:32:42 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/02/03 16:35:01 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ static void	ft_base(const char **str, int *pbase)
 
 static int	ft_ishexdigit(char c)
 {
-	return ('0' <= c && 'f' >= c);
+	return (ft_isdigit(c)
+		|| ('a' <= c && 'f' >= c)
+		|| ('A' <= c && 'F' >= c));
 }
 
 long		ft_strtol(const char *str, int base)
