@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/27 14:04:40 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/02/14 12:10:19 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void				ft_assert(const char *expr, const char *file, int nline);
 
 # define BYTE 			8
 # define BUFF_SIZE		1
+
+# define STDOUT			0
+# define STDIN			1
+# define STDERR			2
+
 # define MAX_FDS		4864
 # define PSEUDO_NULL	-1
 # define NSIN			8
@@ -192,8 +197,7 @@ char				*ft_strlowcase(char *str);
 char				*ft_strncat(char *dest, char *src, int nb);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strupcase(char *str);
-void				ft_swap(void *pv1, void *pv2, size_t elem_size);
-void				ft_rotate(void *front, void *middle, void *end);
+
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 
@@ -218,6 +222,7 @@ int					ft_test_bit(void *pv, size_t elem_size, size_t bit_pos);
 void				ft_reverse_bits(void *pv, size_t elem_size);
 int					ft_hamming_weight(const void *pb, size_t elem_size);
 
+void				ft_swap(void *pv1, void *pv2, size_t elem_size);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -228,6 +233,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				*ft_memdup(const void *src, size_t n);
+void				ft_memrot(void *front, void *middle, void *end);
 
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);

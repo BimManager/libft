@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*   ft_memrot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/13 11:57:51 by kkozlov           #+#    #+#             */
-/*   Updated: 2019/02/13 12:00:26 by kkozlov          ###   ########.fr       */
+/*   Created: 2020/02/14 12:10:41 by kkozlov           #+#    #+#             */
+/*   Updated: 2020/02/14 12:10:42 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_rotate(void *front, void *middle, void *end)
+void	ft_memrot(void *front, void *middle, void *end)
 {
 	void		*buf;
 	size_t		front_size;

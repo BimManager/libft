@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:15:08 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/01/14 17:33:34 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/02/14 12:07:14 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_die(const char *msg, int status)
 {
-	ft_printf("\033[1;31m%s\033[0m\n", msg);
+	ft_printf("%s\n", msg);
 	exit(status);
 }
