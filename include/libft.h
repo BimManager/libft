@@ -6,7 +6,7 @@
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 20:38:10 by kkozlov           #+#    #+#             */
-/*   Updated: 2020/02/14 12:10:19 by kkozlov          ###   ########.fr       */
+/*   Updated: 2020/02/21 09:25:40 by kkozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ int					ft_str_islower(char *str);
 int					ft_str_isnumeric(char *str);
 int					ft_str_isprint(char *str);
 int					ft_str_isupper(char *str);
+int					ft_str_isanagram(const char *s1, const char *s2);
 char				*ft_strcapitalize(char *str);
 char				*ft_strdup(const char *s1);
 char				*ft_strndup(const char *s1, size_t n);
@@ -223,6 +224,7 @@ void				ft_reverse_bits(void *pv, size_t elem_size);
 int					ft_hamming_weight(const void *pb, size_t elem_size);
 
 void				ft_swap(void *pv1, void *pv2, size_t elem_size);
+void				ft_endcvt(void *pv, size_t width, size_t nel);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
