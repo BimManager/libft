@@ -42,6 +42,10 @@ void				ft_assert(const char *expr, const char *file, int nline);
 # define ARE_EQUAL(a, b) ((a) ^ (b))
 # define ZERO_OUT(a) ((a) ^ (a))
 
+# define PARENT(n) ((n) & 1 ? (n) >> 1 : ((n) >> 1) - 1)
+# define LEFT(n) (((n) << 1) + 1)
+# define RIGHT(n) (((n) << 1) + 2)
+
 # define M1		0x5555555555555555
 # define M2		0x3333333333333333
 # define M4		0x0f0f0f0f0f0f0f0f
@@ -353,6 +357,8 @@ int					*ft_cntsort(int *arr, size_t n);
 void				ft_insrtsort(void *base, size_t nel, size_t width,
 						int (*cmp)(const void *, const void *));
 void				ft_qsort(void *base, size_t nel, size_t width,
+						int (*compar)(const void *, const void *));
+void				ft_heapsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
 
 int					ft_dprintf(int fd, const char *fmt, ...);
