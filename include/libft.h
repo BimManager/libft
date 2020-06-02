@@ -31,16 +31,23 @@ void				ft_assert(const char *expr, const char *file, int nline);
 #  define FT_ASSERT(e) ((e) ? (void)0 : ft_assert(#e, __FILE__, __LINE__))
 # endif
 
+# define FT_MAX(a, b) ((a) >= (b) ? (a) : (b))
+# define FT_MIN(a, b) ((a) <= (b) ? (a) : (b))
+# define FT_ABS(x) ((x) < 0 ? -(x) : (x))
 # define FT_UINT64_2PART(a, b) ((size_t)a << 32 + 0x##b##u)
 
 # define SET_BIT(x, n)	((x) | (1 << (n)))
 # define CLEAR_BIT(x, n) ((x) & ~(1 << (n)))
 # define TOGGLE_BIT(x, n) ((x) ^ (1 << (n)))
 # define TEST_BIT(x, n) ((x >> n) & 1)
+# define ROTL(x, n, w) (((x) << (n)) | ((x) >> ((w) - (n))))
+# define ROTR(x, n, w) (((x) >> (n)) | ((x) << ((w) - (n))))	
 
 # define IS_ODD(x) ((x) & 1)
 # define ARE_EQUAL(a, b) ((a) ^ (b))
 # define ZERO_OUT(a) ((a) ^ (a))
+# define TO_LOWER(c) (c | ' ')
+# define TO_UPPER(c) (c & '_')
 
 # define PARENT(n) ((n) & 1 ? (n) >> 1 : ((n) >> 1) - 1)
 # define LEFT(n) (((n) << 1) + 1)
@@ -232,6 +239,7 @@ int					**ft_permute(int *nums, int nsize,
 								int *outsize, int **outcsizes);
 int					ft_isprime(unsigned int nb);
 int					ft_ispow2(size_t x);
+int					ft_kadane(int *arr, int n);
 
 void				ft_print_bit_pattern(void *pv, size_t elem_size);
 void				ft_set_bit(void *pv, size_t elem_size, size_t bit_pos);
