@@ -250,6 +250,7 @@ int					ft_hamming_weight(const void *pb, size_t elem_size);
 int					ft_popcount64(uint64_t x);
 
 void				ft_swap(void *pv1, void *pv2, size_t elem_size);
+void				ft_swab(const void *src, void *dst, size_t nbytes);
 void				ft_endcvt(void *pv, size_t width, size_t nel);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -361,6 +362,8 @@ t_data				*ft_triefind(t_trie *trie, const char *query);
 
 int					ft_btrdiam(t_btrnode *root);
 
+void				*ft_bsearch(const void *key, const void *base, size_t nel,
+								size_t width, int (*cmp)(const void *, const void *));
 int					*ft_cntsort(int *arr, size_t n);
 void				ft_insrtsort(void *base, size_t nel, size_t width,
 						int (*cmp)(const void *, const void *));

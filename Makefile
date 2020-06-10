@@ -82,7 +82,8 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_trienew.c ft_trieadd.c ft_triefind.c \
 		ft_triedel.c ft_fac.c ft_permute.c \
 		ft_btrdiam.c ft_str_isanagram.c ft_endcvt.c \
-		ft_popcount64.c ft_heapsort.c ft_kadane.c)
+		ft_popcount64.c ft_heapsort.c ft_kadane.c \
+		ft_bsearch.c ft_swab.c)
 
 OBJS := $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(SRCS))
 
