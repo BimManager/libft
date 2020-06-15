@@ -231,8 +231,12 @@ long				ft_strtol(const char *str, int base);
 void				*ft_fndmax(void *base, size_t nel, size_t width,
 						int (*cmp)(const void *, const void *));
 
+/*
+** ================= MATHS FUNCTIONS ================= **
+*/
 unsigned int		ft_abs(int x);
 double				ft_sqrt(double x);
+double				ft_pow(double x, int n);
 size_t				ft_fac(t_uint16 n);
 size_t				ft_gcd(size_t a, size_t b);
 int					**ft_permute(int *nums, int nsize,
@@ -292,6 +296,9 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 
+/*
+** ================= DATA STRUCTURES ================= **
+*/
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdel(t_list **alst, void (*del) (void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del) (void *, size_t));
@@ -362,6 +369,9 @@ t_data				*ft_triefind(t_trie *trie, const char *query);
 
 int					ft_btrdiam(t_btrnode *root);
 
+/*
+** ================= SORTING AND SEARCHING ================= **
+*/
 void				*ft_bsearch(const void *key, const void *base, size_t nel,
 								size_t width, int (*cmp)(const void *, const void *));
 int					*ft_cntsort(int *arr, size_t n);
@@ -372,6 +382,9 @@ void				ft_qsort(void *base, size_t nel, size_t width,
 void				ft_heapsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
 
+/*
+** ================= FT_PRINTF ================= **
+*/
 int					ft_dprintf(int fd, const char *fmt, ...);
 int					ft_printf(const char *fmt, ...);
 
