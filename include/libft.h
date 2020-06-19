@@ -381,6 +381,8 @@ void				ft_qsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
 void				ft_heapsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
+void				ft_mergesort(void *base, size_t nel, size_t width,
+                                 int (*cmp) (const void *, const void *));
 
 /*
 ** ================= FT_PRINTF ================= **
