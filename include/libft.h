@@ -185,6 +185,9 @@ int					get_next_line(const int fd, char **line);
 
 void				ft_die(const char *msg, int status);
 
+/*
+** ================= STRING FUNCTIONS ================= **
+*/
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -222,9 +225,24 @@ char				*ft_strlowcase(char *str);
 char				*ft_strncat(char *dest, char *src, int nb);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strupcase(char *str);
-
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
+char				*ft_strnew(size_t size);
+void				ft_strdel(char **as);
+void				ft_strclr(char *s);
+void				ft_striter(char *s, void (*f) (char *));
+void				ft_striteri(char *s, void (*f) (unsigned int, char *));
+char				*ft_strmap(char const *s, char (*f) (char));
+char				*ft_strmapi(char const *s, char (*f) (unsigned int, char));
+int					ft_strequ(char const *s1, char const *s2);
+int					ft_strnequ(char const *s1, char const *s2, size_t n);
+char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strtrim(char const *s);
+char				**ft_strsplit(char const *s, char c);
+t_list				*ft_strsplit_lst(char const *s, char c);
+char				*ft_itoa(int n);
+char				*ft_itoa_base(int value, int base);
 
 int					ft_atoi(const char *str);
 long				ft_strtol(const char *str, int base);
@@ -253,6 +271,9 @@ void				ft_reverse_bits(void *pv, size_t elem_size);
 int					ft_hamming_weight(const void *pb, size_t elem_size);
 int					ft_popcount64(uint64_t x);
 
+/*
+** ================= MEMORY FUNCTIONS ================= **
+*/
 void				ft_swap(void *pv1, void *pv2, size_t elem_size);
 void				ft_swab(const void *src, void *dst, size_t nbytes);
 void				ft_endcvt(void *pv, size_t width, size_t nel);
@@ -268,22 +289,9 @@ void				ft_memdel(void **ap);
 void				*ft_memdup(const void *src, size_t n);
 void				ft_memrot(void *front, void *middle, void *end);
 
-char				*ft_strnew(size_t size);
-void				ft_strdel(char **as);
-void				ft_strclr(char *s);
-void				ft_striter(char *s, void (*f) (char *));
-void				ft_striteri(char *s, void (*f) (unsigned int, char *));
-char				*ft_strmap(char const *s, char (*f) (char));
-char				*ft_strmapi(char const *s, char (*f) (unsigned int, char));
-int					ft_strequ(char const *s1, char const *s2);
-int					ft_strnequ(char const *s1, char const *s2, size_t n);
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
-char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strtrim(char const *s);
-char				**ft_strsplit(char const *s, char c);
-t_list				*ft_strsplit_lst(char const *s, char c);
-char				*ft_itoa(int n);
-char				*ft_itoa_base(int value, int base);
+/*
+** ================= OUTPUT FUNCTIONS ================= **
+*/
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -295,6 +303,14 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
+
+/*
+** ================= HASH FUNCTIONS ================= **
+*/
+
+unsigned long		djb2(const char *str);
+unsigned long		sdbm(const char *str);
+
 
 /*
 ** ================= DATA STRUCTURES ================= **
