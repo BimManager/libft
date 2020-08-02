@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btrdiam.c                                       :+:      :+:    :+:   */
+/*   ft_btdiam.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkozlov <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@ static int	xmax(int a, int b)
 	return (a > b ? a : b);
 }
 
-static int	xbtrdiam(t_btrnode *root, int *diam)
+static int	_btdiam(t_btnode *root, int *diam)
 {
 	int	left_h;
 	int	right_h;
@@ -25,18 +25,18 @@ static int	xbtrdiam(t_btrnode *root, int *diam)
 
 	if (!root)
 		return (0);
-	left_h = xbtrdiam(root->left, diam);
-	right_h = xbtrdiam(root->right, diam);
+	left_h = _btdiam(root->left, diam);
+	right_h = _btdiam(root->right, diam);
 	max = left_h + right_h + 1;
 	*diam = xmax(max, *diam);
 	return (xmax(left_h, right_h) + 1);
 }
 
-int			ft_btrdiam(t_btrnode *root)
+int			ft_btdiam(t_btnode *root)
 {
 	int	diam;
 
 	diam = 0;
-	xbtrdiam(root, &diam);
+	_btdiam(root, &diam);
 	return (diam);
 }

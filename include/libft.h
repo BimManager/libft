@@ -152,13 +152,27 @@ typedef struct		s_trie
 	t_data			*data;
 }					t_trie;
 
-typedef struct		s_btrnd
+typedef struct		s_tstnode
+{
+  struct s_tstnode	*left;
+  struct s_tstnode	*mid;
+  struct s_tstnode	*right;
+  char				ch;
+  t_data			*data;
+}					t_tstnode;
+
+typedef struct		s_tstrie
+{
+  t_tstnode			*root;
+}					t_tstrie;
+
+typedef struct		s_btnode
 {
 	t_data			*data;
-	struct s_btrnd	*left;
-	struct s_btrnd	*right;
+	struct s_btnode	*left;
+	struct s_btnode	*right;
 	char			red;
-}					t_btrnode;
+}					t_btnode;
 
 typedef struct		s_hpnode
 {
@@ -307,10 +321,8 @@ void				ft_putendl_fd(char const *s, int fd);
 /*
 ** ================= HASH FUNCTIONS ================= **
 */
-
 unsigned long		djb2(const char *str);
 unsigned long		sdbm(const char *str);
-
 
 /*
 ** ================= DATA STRUCTURES ================= **
@@ -383,7 +395,19 @@ void				ft_triedel(t_trie **trie, void (*del)(void *, size_t));
 void				ft_trieadd(t_trie *trie, const char *query, t_data *data);
 t_data				*ft_triefind(t_trie *trie, const char *query);
 
-int					ft_btrdiam(t_btrnode *root);
+
+t_tstnode			*ft_tstnode_new(char ch);
+void				ft_tstnode_del(t_tstnode **node,
+                                   void (*del)(void *, size_t));
+void				ft_tstrie_init(t_tstrie *trie);
+void				ft_tstrie_del(t_tstrie *trie, void (*del)(void *, size_t));
+void				ft_tstrie_put(t_tstrie *trie, char const *key,
+                                  void const *content, size_t size);
+t_data				*ft_tstrie_get(t_tstrie *trie, char const *key);
+void				ft_tstrie_delkey(t_tstrie *trie, char const *key,
+                                     void (*del)(void *, size_t));
+
+int					ft_btdiam(t_btnode *root);
 
 /*
 ** ================= SORTING AND SEARCHING ================= **

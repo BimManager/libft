@@ -14,7 +14,10 @@
 
 void	ft_datadel(t_data **data, void (*del)(void *, size_t))
 {
+  if (del)
 	del((*data)->content, (*data)->size);
-	free(*data);
-	*data = NULL;
+  else
+    free((*data)->content);
+  free(*data);
+  *data = NULL;
 }

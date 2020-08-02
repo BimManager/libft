@@ -81,10 +81,13 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_die.c ft_cntsort.c ft_insrtsort.c \
 		ft_trienew.c ft_trieadd.c ft_triefind.c \
 		ft_triedel.c ft_fac.c ft_permute.c \
-		ft_btrdiam.c ft_str_isanagram.c ft_endcvt.c \
+		ft_btdiam.c ft_str_isanagram.c ft_endcvt.c \
 		ft_popcount64.c ft_heapsort.c ft_kadane.c \
 		ft_bsearch.c ft_swab.c ft_pow.c \
-		ft_mergesort.c ft_djb2.c ft_sdbm.c)
+		ft_mergesort.c ft_djb2.c ft_sdbm.c \
+		ft_tstnode_new.c ft_tstnode_del.c \
+		ft_tstrie_init.c ft_tstrie_del.c \
+		ft_tstrie_put.c ft_tstrie_get.c ft_tstrie_delkey.c)
 
 OBJS := $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(SRCS))
 
