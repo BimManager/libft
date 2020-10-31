@@ -342,6 +342,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f) (t_list *elem));
 void				ft_lstrev(t_list **alst);
 size_t				ft_lstsize(t_list *lst);
 t_list				*ft_lstsort(t_list *lst, int (*cmp)(void *, void *));
+t_list				*ft_lstmergesort(t_list *lst, int (*cmp)(void *, void *));
 
 t_stack				*ft_stacknew(void const *content, size_t content_size);
 void				ft_stackdel(t_stack **stack, void (*del) (void *, size_t));

@@ -87,7 +87,8 @@ SRCS := $(addprefix $(SRCDIR)/, \
 		ft_mergesort.c ft_djb2.c ft_sdbm.c \
 		ft_tstnode_new.c ft_tstnode_del.c \
 		ft_tstrie_init.c ft_tstrie_del.c \
-		ft_tstrie_put.c ft_tstrie_get.c ft_tstrie_delkey.c)
+		ft_tstrie_put.c ft_tstrie_get.c ft_tstrie_delkey.c \
+		ft_lstmergesort.c)
 
 OBJS := $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(SRCS))
 
