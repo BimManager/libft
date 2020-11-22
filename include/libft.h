@@ -277,6 +277,9 @@ int					ft_isprime(unsigned int nb);
 int					ft_ispow2(size_t x);
 int					ft_kadane(int *arr, int n);
 
+/*
+** ================= BIT MANIPULATIONS ================= **
+*/
 void				ft_print_bit_pattern(void *pv, size_t elem_size);
 void				ft_set_bit(void *pv, size_t elem_size, size_t bit_pos);
 void				ft_zero_bit(void *pv, size_t elem_size, size_t bit_pos);
@@ -413,11 +416,14 @@ int					ft_btdiam(t_btnode *root);
 /*
 ** ================= SORTING AND SEARCHING ================= **
 */
+void				ft_shuffle(void *base, size_t nel, size_t width);
 void				*ft_bsearch(const void *key, const void *base, size_t nel,
 								size_t width, int (*cmp)(const void *, const void *));
 int					*ft_cntsort(int *arr, size_t n);
 void				ft_insrtsort(void *base, size_t nel, size_t width,
 						int (*cmp)(const void *, const void *));
+void				ft_shellsort(void *base, size_t nel, size_t width,
+                        int (*cmp)(void const *, void const *));
 void				ft_qsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
 void				ft_heapsort(void *base, size_t nel, size_t width,
