@@ -426,6 +426,8 @@ void				ft_shellsort(void *base, size_t nel, size_t width,
                         int (*cmp)(void const *, void const *));
 void				ft_qsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
+void				ft_qsort_3way(void *base, size_t nel, size_t width,
+                        int (*comp)(const void *, const void *));
 void				ft_heapsort(void *base, size_t nel, size_t width,
 						int (*compar)(const void *, const void *));
 void				ft_mergesort(void *base, size_t nel, size_t width,
